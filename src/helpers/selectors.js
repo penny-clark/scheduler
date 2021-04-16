@@ -2,7 +2,7 @@ export function getAppointmentsForDay(state, day) {
   const result = [];
   let selectedDay;
 
-  /* alt method from breakout session
+  /* alternate method from breakout session
   const dayFound = state.days.find(eachDay => eachDay.name === day);
   if(!dayFound) {
     return [];
@@ -32,4 +32,16 @@ export function getInterview(state, interview) {
   result["student"] = interview.student;
   result["interviewer"] = interviewerMatch;
   return result;
+}
+
+//new approach for this function based on the getAppointmentsForDay walkthrough in this breakout session: https://www.youtube.com/watch?v=dr9KjrI5Ihg
+export function getInterviewersForDay(state, day) {
+  const dayFound = state.days.find(eachDay => eachDay.name === day);
+  if(!dayFound) {
+    return [];
+  }
+
+  const interviewersForDay = dayFound.interviewers.map(interviewerId => state.interviewers[interviewerId])
+
+  return interviewersForDay;
 }
