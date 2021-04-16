@@ -2,6 +2,15 @@ export function getAppointmentsForDay(state, day) {
   const result = [];
   let selectedDay;
 
+  /* alt method from breakout session
+  const dayFound = state.days.find(eachDay => eachDay.name === day);
+  if(!dayFound) {
+    return [];
+  }
+
+  dayFound.appoinments.map(appointmentId => state.appointments[appointmentId])
+  */
+
   for (const givenday of state.days) {
     if (givenday.name === day) {
       selectedDay = givenday;

@@ -75,6 +75,6 @@ export default function Form(props) {
   )
 }
 
-//onCanacel () { back() }
+//onCancel () { back() }
 // onSave () { transition(SAVING) }
 //And maybe with second param: SAVING: function onComplete() { transition(SHOW) }
