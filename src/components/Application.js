@@ -14,7 +14,7 @@ export default function Application(props) {
     appointments: {},
     interviewers: {}
   })
-
+  
   const setDay = day => setState({ ...state, day})
 
   //api calls
@@ -36,7 +36,34 @@ export default function Application(props) {
   }, [])
 
   const appointments = getAppointmentsForDay(state, state.day);
+  function bookInterview(id, interview) {
+    //In the future it will allow us to change the local state when we book an interview.
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
 
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+      axios
+      .put(`/api/appointments/${id}`, {
+        interview
+      })
+      .then((response) => {
+      });
+      setState({ ...
+        state,
+        appointments
+      });
+  }
+
+  function cancelInterview(id, interview) {
+    
+  }
+ 
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
     const interviewers = getInterviewersForDay(state, state.day);
@@ -47,6 +74,7 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={interviewers}
+        bookInterview={bookInterview}
       />
     );
   });
