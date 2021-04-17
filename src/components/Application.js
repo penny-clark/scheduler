@@ -36,6 +36,7 @@ export default function Application(props) {
   }, [])
 
   const appointments = getAppointmentsForDay(state, state.day);
+
   function bookInterview(id, interview) {
     //In the future it will allow us to change the local state when we book an interview.
     const appointment = {
@@ -47,21 +48,32 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment
     };
-
-      axios
+    
+      return axios
       .put(`/api/appointments/${id}`, {
         interview
       })
       .then((response) => {
-      });
-      setState({ ...
-        state,
-        appointments
-      });
+        setState({ ...
+          state,
+          appointments
+        });
+      })
+      
   }
 
-  function cancelInterview(id, interview) {
-    
+  function cancelInterview(id) {
+    const appointments = { 
+      ...state.appointments,
+      [id]: { ...[id], interview: null}
+    };
+      return axios
+      .delete(`/api/appointments/${id}`, {})
+      .then((response) => {
+        setState({ ...state,
+        appointments
+        });
+      })
   }
  
   const schedule = appointments.map((appointment) => {
@@ -75,6 +87,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
