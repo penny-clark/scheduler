@@ -1,4 +1,4 @@
-import React, { useState } from "react"; //not sure if I'm supposed to have this
+import { useState } from "react"; //not sure if I'm supposed to have this
 
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
