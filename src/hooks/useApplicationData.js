@@ -17,7 +17,6 @@ useEffect(() => {
   const appointmentsPromise = axios.get("/api/appointments")
   const intervierwersPromise = axios.get("/api/interviewers")
   const promises = [daysPromise, appointmentsPromise, intervierwersPromise];
-  
   Promise.all(promises)
     .then((all) => {
       const newDays = all[0].data;
