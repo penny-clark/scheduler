@@ -22,31 +22,52 @@ const setDay = day => setState({ ...state, day})
 //maybe instead of giving setSpots a day param, it should take an appointement id param 
 //and find the day based on the id 
 
+/*
+should use map to make a copy of days if dayname = dayName object , return it, otherwise just return the same day
+*/
 
-function setSpots(intId) {
+
+//in progress refactoring from Gary's breakout session
+
+// const getSpotsForDay = function (dayObj, appointments) {
+    
+//   let spots = 0;
+//   for (const id of dayObj.appointments) {
+//     const appointment = appointments[id];
+//     if (!appointment) {
+//       spots++;
+//     }
+//   }
+
+//   return spots;
+// }
+
+function setSpots(appointmentId) {
+
+  //if id matches a spot in the days.appointment array, that's the date 
   let day;
   let pos;
-  if (intId <= 5) {
+  if (appointmentId <= 5) {
    day = "Monday"
    pos = 0
   }
     
-  if (intId > 5 && intId <= 10) {
+  if (appointmentId > 5 && appointmentId <= 10) {
     day = "Tuesday"
     pos = 1
   }
 
-  if (intId > 10 && intId <= 15) {
+  if (appointmentId > 10 && appointmentId <= 15) {
     day = "Wednesday"
     pos = 2
   }
 
-  if (intId > 15 && intId <= 20) {
+  if (appointmentId > 15 && appointmentId <= 20) {
     day = "Thursday"
     pos = 3
   }
 
-  if (intId > 20 && intId <=25) {
+  if (appointmentId > 20 && appointmentId <=25) {
     day = "Friday"
     pos = 4
   }
@@ -88,15 +109,13 @@ function bookInterview(id, interview) {
   const newDays = [ ...state.days.slice()]
   newDays[daysInfo[0]].spots = (daysInfo[1] -1)
   
-  
   return axios
   .put(`/api/appointments/${id}`, {
     interview
   })
   .then((response) => {
     console.log(response)
-    setState({ ...
-      state,
+    setState({ ...state,
       appointments,
       days: newDays
     });
@@ -112,7 +131,6 @@ function cancelInterview(id) {
   const daysInfo = setSpots(id)
   const newDays = [ ...state.days.slice()]
   newDays[daysInfo[0]].spots = (daysInfo[1] + 1)
-  console.log(newDays, "NEW DAYS")
 
   return axios
   .delete(`/api/appointments/${id}`, {})
