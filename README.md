@@ -18,6 +18,8 @@ Scheduler has been tested during development with Storybook, Jest, and Cypress.
 
 ## Screenshots
 
+!["Make an appointment"](https://github.com/penny-clark/scheduler/blob/master/docs/make-an-appointment.png?raw=true)
+!["Edit an appointment"](https://github.com/penny-clark/scheduler/blob/master/docs/edit-an-appointment.png?raw=true)
 
 ## Setup
 
