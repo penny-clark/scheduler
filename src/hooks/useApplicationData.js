@@ -11,7 +11,8 @@ const [state, setState] = useState({
 
 const setDay = day => setState({ ...state, day})
 
-//sets state with initial load from the database
+//Sets state with initial data loaded from the database
+
 useEffect(() => {
   const daysPromise = axios.get("/api/days");
   const appointmentsPromise = axios.get("/api/appointments")
@@ -29,7 +30,7 @@ useEffect(() => {
 }, [])
 
 
-//Set spots logic from Gary's breakout session, as it was better and more functional than my solution
+//These two set spots functions are from Gary's breakout session
 
 const getSpotsForDay = function (dayObj, appointments) {
   let spots = 0;
@@ -51,8 +52,6 @@ const updateSpots = function (dayName, days, appointments) {
   return newDays;
 
 };
-
-
 
 function bookInterview(id, interview) {
   const appointment = {

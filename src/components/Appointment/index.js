@@ -53,7 +53,7 @@ export default function Appointment(props) {
         onEdit={() => transition(EDIT)}
         onDelete={() => transition(CONFIRM)}
       />
-    )}
+      )}
       {mode === CREATE && (
         <Form
           interviewers={props.interviewers}
@@ -85,7 +85,6 @@ export default function Appointment(props) {
           interviewers={props.interviewers}
           onSave={save}
           onCancel={back}
-
         />
       )}
       {mode === ERROR_SAVE && (
@@ -100,8 +99,6 @@ export default function Appointment(props) {
           onClose={back}
         />
       )} 
-  
-    
     </article>
   )
 }

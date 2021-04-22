@@ -1,5 +1,7 @@
 import { useState } from "react"; 
 
+//These functions are for tracking the mode changes in the Appointment component
+
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);

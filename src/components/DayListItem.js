@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import "components/DayListItem.scss";
 
+//function to set the display text based on the number of remaining spots
 const formatSpots = function (spots) {
   if (spots === 0) {
   return 'no spots remaining'

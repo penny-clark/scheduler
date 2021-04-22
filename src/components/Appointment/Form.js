@@ -1,32 +1,3 @@
-// The Form component should track the following state:
-
-// name:String
-// interviewer:Number
-// The Form component should have the following actions:
-
-// setName:Function
-// setInterviewer:Function
-// The Form component should take the following props:
-
-// name:String
-// interviewers:Array
-// interviewer:Number
-// onSave:Function X
-// onCancel:Function X
-
-// As part of our Edit story, the Form component should take the following props:
-
-// name:String
-// interviewers:Array
-// interviewer:Number
-// onSave:Function
-// onCancel:Function
-// As part of our Create story, the Form component should take the following props:
-
-// interviewers:Array
-// onSave:Function
-// onCancel:Function
-
 import React, { useState } from 'react';
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
@@ -46,6 +17,7 @@ export default function Form(props) {
     props.onCancel();
   }
 
+  //checks if the user has entered a name before saving the appointment
   function validate() {
     if (name === "") {
       setError("Student name cannot be blank");
@@ -83,7 +55,3 @@ export default function Form(props) {
   </main>
   )
 }
-
-//onCancel () { back() }
-// onSave () { transition(SAVING) }
-//And maybe with second param: SAVING: function onComplete() { transition(SHOW) }
